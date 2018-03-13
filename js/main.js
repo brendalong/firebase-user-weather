@@ -37,6 +37,7 @@ function checkUserFB(uid){
             console.log("need to add this user to FB" , data);
            db.addUserFB(makeUserObj(uid))
             .then((result) => {
+               console.log("added and uid", uid);
                console.log("main: user added", result.name);
                let tmpUser = {
                   zipCode: defaultCode,
@@ -61,9 +62,9 @@ function checkUserFB(uid){
     });
 }
 
-function makeUserObj(user){
+function makeUserObj(uid){
    let userObj = {
-      uid: user,
+      uid: uid,
       zipCode: defaultCode
    };
    return userObj;

@@ -11,7 +11,7 @@ let currentUser = {
      fbID: null
     };
 
-    
+
 //listen for changed state
 firebase.auth().onAuthStateChanged((user) => {
 	console.log("onAuthStateChanged", user);
@@ -65,7 +65,9 @@ function setUserVars(obj){
         currentUser.zipCode = obj.zipCode ? obj.zipCode : currentUser.zipCode;
         currentUser.weatherTime = obj.weatherTime ? obj.weatherTime : currentUser.weatherTime;
         currentUser.weather = obj.weather ? obj.weather : currentUser.weather ;
-        currentUser.fbID = obj.fbID ? obj.fbID : currentUser.fbID ;
+        currentUser.fbID = obj.fbID ? obj.fbID : currentUser.fbID;
+        currentUser.uid = obj.uid ? obj.uid : currentUser.uid;
+        console.log("resolve of setUserVars", currentUser);
         resolve(currentUser);
     });
 }
