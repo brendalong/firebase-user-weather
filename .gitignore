@@ -4,5 +4,5 @@ dist/
 css/
 lib/node_modules
 js/fb-key.js
-js/weather.js
+js/weather-key.js
 lib/.sass-cache
