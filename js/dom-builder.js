@@ -1,4 +1,6 @@
 "use strict";
+//example from previous exercise
+
 // This module only cares about the data it receives. It doesn't have to know about where the data comes from.
 
 let $ = require('jquery');
