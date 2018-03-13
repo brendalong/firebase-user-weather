@@ -11,18 +11,6 @@ let $ = require('jquery'),
 // ****************************************
 
 // POST - Submits data to be processed to a specified resource.
-
-//example with delete
-// function deleteItem(fbID) {
-// 	return $.ajax({
-//       	url: `${firebase.getFBsettings().databaseURL}/songs/${fbID}.json`,
-//       	method: "DELETE"
-// 	}).done((data) => {
-// 		return data;
-// 	});
-// }
-
-
 // GET - Requests/read data from a specified resource
 // PUT - Update data to a specified resource.
 
@@ -48,7 +36,6 @@ function addUserFB(userObj){
 }
 
 function updateUserFB(userObj){
-   //  console.log("updateFB", userObj);
     return $.ajax({
         url: `${firebase.getFBsettings().databaseURL}/user/${userObj.fbID}.json`,
         type: 'PUT',
@@ -59,22 +46,18 @@ function updateUserFB(userObj){
      });
 }
 
-function addWeatherToUser(data){
-    let currentUser = user.getUser();
-    console.log("this is the currentUser", currentUser);
-    // return $.ajax({
-    //     url: `${firebase.getFBsettings().databaseURL}/user.json?orderBy="uid"&equalTo="${currentUser}`,
-    //     type: 'PUT',
-    //     data: JSON.stringify(data),
-    //     dataType: 'json'
-    //  }).done((userID) => {
-    //     return userID;
-    //  });
-}
+//example with delete
+// function deleteItem(fbID) {
+// 	return $.ajax({
+//       	url: `${firebase.getFBsettings().databaseURL}/songs/${fbID}.json`,
+//       	method: "DELETE"
+// 	}).done((data) => {
+// 		return data;
+// 	});
+// }
 
 module.exports = {
     getFBDetails,
     addUserFB,
-    updateUserFB,
-    addWeatherToUser
+    updateUserFB
 };

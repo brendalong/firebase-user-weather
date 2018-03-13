@@ -43,10 +43,6 @@ function setUser(val){
 	currentUser.uid = val;
 }
 
-// function setUserZip(obj){
-//     currentUserZip = obj.zipCode;
-// }
-
 function getUserZip(){
     return currentUser.zipCode;
 }
@@ -60,7 +56,7 @@ function getUserObj(){
 }
 
 function setUserVars(obj){
-    console.log("user.setUserVars:", obj);
+    console.log("user.setUserVars: obj", obj);
     return new Promise((resolve, reject) => {
         currentUser.zipCode = obj.zipCode ? obj.zipCode : currentUser.zipCode;
         currentUser.weatherTime = obj.weatherTime ? obj.weatherTime : currentUser.weatherTime;
@@ -72,7 +68,7 @@ function setUserVars(obj){
 
 function showUser(obj) {
    let userDetails = getUserObj();
-   console.log("showUser got details:", userDetails);
+   console.log("user.showUser: userDetails:", userDetails);
 }
 
 

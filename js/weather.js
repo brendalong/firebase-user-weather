@@ -26,14 +26,14 @@ function getUserWeather(userObj){
     //make API Call
    if (userObj.weatherTime != null){
         if (helper.compareDateHelper(user.getUserObj().weatherTime, new Date())){
-            console.log("compare true");
-            console.log("use weather in obj");
+            console.log("weather.getUserWeather: compare true");
+            console.log("weather.getUserWeather: use weather in obj");
         }else{
-            console.log("compare false", userObj.zipCode);
+            console.log("weather.getUserWeather: compare false", userObj.zipCode);
             getUpdateWeather(userObj.zipCode);
         }
     }else{
-      console.log("no weather, go get some", userObj.zipCode);
+      console.log("weather.getUserWeather: no weather, go get some", userObj.zipCode);
       getUpdateWeather(userObj.zipCode);
     }
 }

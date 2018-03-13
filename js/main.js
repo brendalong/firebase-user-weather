@@ -22,7 +22,7 @@ $("#login").click(function() {
 });
 
 $("#logout").click(() => {
-    console.log("logout clicked");
+    console.log("main.logout clicked");
     user.logOut();
     $("#login").removeClass("is-hidden");
     $("#logout").addClass("is-hidden");
@@ -32,12 +32,12 @@ function checkUserFB(uid){
     db.getFBDetails(uid)
     .then((result) => {
         let data = Object.values(result);
-        console.log("any data?", data.length);
+        console.log("main: any data?", data.length);
         if (data.length === 0){
             console.log("need to add this user to FB" , data);
            db.addUserFB(makeUserObj(uid))
             .then((result) => {
-               console.log("user added", result.name);
+               console.log("main: user added", result.name);
                let tmpUser = {
                   zipCode: defaultCode,
                   fbID: result.name,
@@ -45,19 +45,16 @@ function checkUserFB(uid){
                };
                return tmpUser;
             }).then((tmpUser) => {
-               // console.log("tmpUser", tmpUser);
                   return user.setUserVars(tmpUser);
             }).then((userObj) => {
-               // console.log("userObj", userObj);
                weather.getUserWeather(userObj);
             });
         }else{
-            console.log("already a user", data);
+            console.log("main: already a user", data);
             var key = Object.keys(result);
             data[0].fbID = key[0];
             user.setUserVars(data[0])
             .then((userObj) => {
-                console.log("user vars begore getUserWeather", userObj);
                weather.getUserWeather(userObj);
             });
         }
@@ -91,11 +88,9 @@ function getZipCodeVal(event){
       };
       user.setUserVars(updateUserObj)
       .then((userObj) => {
-            console.log("new zip user", userObj);
+            console.log("main: new zip user", userObj);
             //get new weather
             weather.getUserWeather(userObj);
         });
-      
-      //update FBUser with updated obj
    }
 }
