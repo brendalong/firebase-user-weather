@@ -11,12 +11,16 @@ let currentUser = {
      fbID: null
     };
 
+    
 //listen for changed state
 firebase.auth().onAuthStateChanged((user) => {
 	console.log("onAuthStateChanged", user);
 	if (user){
 		currentUser.uid = user.uid;
-		console.log("current user Logged in?", currentUser);
+        console.log("current user Logged in?", currentUser);
+        if (currentUser.fbID === null){
+            logOut();
+        }
 	}else {
         currentUser.uid = null;
         currentUser.zipCode = null;
