@@ -48,7 +48,6 @@ function getUpdateWeather(zip){
         };
          return user.setUserVars(userObj);
       }).then((userObj) => {
-         console.log("userObj", userObj);
          db.updateUserFB(userObj)
          .then(() => {
             user.showUser(userObj);
