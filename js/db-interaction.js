@@ -95,16 +95,16 @@ function addUserFB(userObj){
         type: 'POST',
         data: JSON.stringify(userObj),
         dataType: 'json'
-     }).done((userID) => {
-        return userID;
+     }).done((fbID) => {
+        return fbID;
      });
 }
 
 function updateUserFB(userObj){
     console.log("updateFB", userObj);
     return $.ajax({
-        url: `${firebase.getFBsettings().databaseURL}/user.json?orderBy="uid"&equalTo="${userObj.id}"`,
-        type: 'POST',
+        url: `${firebase.getFBsettings().databaseURL}/user/${userObj.fbID}.json`,
+        type: 'PUT',
         data: JSON.stringify(userObj),
         dataType: 'json'
      }).done((userID) => {

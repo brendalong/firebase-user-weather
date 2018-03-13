@@ -5,3 +5,4 @@ css/
 lib/node_modules
 js/fb-key.js
 js/weather.js
+lib/.sass-cache

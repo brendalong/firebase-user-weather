@@ -3,7 +3,7 @@
 let firebase = require("./fb-config"),
      provider = new firebase.auth.GoogleAuthProvider();
 let currentUser = {
-     id: null,
+     uid: null,
      zip: null,
      weatherTime: null,
      weather: null,
@@ -14,10 +14,10 @@ let currentUser = {
 firebase.auth().onAuthStateChanged((user) => {
 	console.log("onAuthStateChanged", user);
 	if (user){
-		currentUser.id = user.uid;
+		currentUser.uid = user.uid;
 		console.log("current user Logged in?", currentUser);
 	}else {
-		currentUser.id = null;
+		currentUser.uid = null;
 		console.log("current user NOT logged in:", currentUser);
 	}
 });
@@ -32,11 +32,11 @@ function logOut(){
 	return firebase.auth().signOut();
 }
 function getUser(){
-	return currentUser.id;
+	return currentUser.uid;
 }
 
 function setUser(val){
-	currentUser.id = val;
+	currentUser.uid = val;
 }
 
 // function setUserZip(obj){
@@ -56,7 +56,6 @@ function getUserObj(){
 }
 
 function setUserVars(obj){
-    
     return new Promise((resolve, reject) => {
         currentUser.zip = obj.zipCode ? obj.zipCode : currentUser.zip;
         currentUser.weatherTime = obj.weatherTime ? obj.weatherTime : currentUser.weatherTime;
@@ -66,5 +65,10 @@ function setUserVars(obj){
     });
 }
 
+function showUser(obj) {
+   let userDetails = getUserObj();
+   console.log("showUser got details:", userDetails);
+}
 
-module.exports = {logInGoogle, logOut, getUser, setUser, getUserZip, setUserVars, getUserWeatherTime, getUserObj};
+
+module.exports = {logInGoogle, logOut, getUser, setUser, getUserZip, setUserVars, getUserWeatherTime, getUserObj, showUser};
