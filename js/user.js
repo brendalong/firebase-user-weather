@@ -11,23 +11,21 @@ let currentUser = {
      fbID: null
     };
 
-
+// logOut();
 //listen for changed state
 firebase.auth().onAuthStateChanged((user) => {
 	console.log("onAuthStateChanged", user);
 	if (user){
 		currentUser.uid = user.uid;
-        console.log("current user Logged in?", currentUser);
-        if (currentUser.fbID === null){
-            logOut();
-        }
+      console.log("current user Logged in?", currentUser);
 	}else {
-        currentUser.uid = null;
-        currentUser.zipCode = null;
-        currentUser.weatherTime = null;
-        currentUser.weather = null;
-        currentUser.fbID = null;
-		console.log("current user NOT logged in:", currentUser);
+
+      currentUser.uid = null;
+      currentUser.zipCode = null;
+      currentUser.weatherTime = null;
+      currentUser.weather = null;
+      currentUser.fbID = null;
+      console.log("current user NOT logged in:", currentUser);
 	}
 });
 
@@ -67,7 +65,6 @@ function setUserVars(obj){
         currentUser.weather = obj.weather ? obj.weather : currentUser.weather ;
         currentUser.fbID = obj.fbID ? obj.fbID : currentUser.fbID;
         currentUser.uid = obj.uid ? obj.uid : currentUser.uid;
-        console.log("resolve of setUserVars", currentUser);
         resolve(currentUser);
     });
 }
