@@ -22,8 +22,10 @@ $("#login").click(function() {
 });
 
 $("#logout").click(() => {
-  console.log("logout clicked");
-  user.logOut();
+    console.log("logout clicked");
+    user.logOut();
+    $("#login").removeClass("is-hidden");
+    $("#logout").addClass("is-hidden");
 });
 
 function checkUserFB(uid){
@@ -55,6 +57,7 @@ function checkUserFB(uid){
             data[0].fbID = key[0];
             user.setUserVars(data[0])
             .then((userObj) => {
+                console.log("user vars begore getUserWeather", userObj);
                weather.getUserWeather(userObj);
             });
         }
@@ -79,10 +82,20 @@ function getZipCodeVal(event){
    if ($("#zip-input").val() != ""){
       let newZip = $("#zip-input").val();
       $("#zip-input").val("");
-
-      //update userObj with new zip
+      //update userObj with new zip and
       //remove temp and time from user obj
-      //get new weather
+      let updateUserObj = {
+          zipCode: newZip,
+          weatherTime: "old",
+          weather: "old"
+      };
+      user.setUserVars(updateUserObj)
+      .then((userObj) => {
+            console.log("new zip user", userObj);
+            //get new weather
+            weather.getUserWeather(userObj);
+        });
+      
       //update FBUser with updated obj
    }
 }

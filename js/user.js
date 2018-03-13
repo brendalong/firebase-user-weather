@@ -5,7 +5,7 @@ let firebase = require("./fb-config"),
 
 let currentUser = {
      uid: null,
-     zip: null,
+     zipCode: null,
      weatherTime: null,
      weather: null,
      fbID: null
@@ -18,14 +18,17 @@ firebase.auth().onAuthStateChanged((user) => {
 		currentUser.uid = user.uid;
 		console.log("current user Logged in?", currentUser);
 	}else {
-		currentUser.uid = null;
+        currentUser.uid = null;
+        currentUser.zipCode = null;
+        currentUser.weatherTime = null;
+        currentUser.weather = null;
+        currentUser.fbID = null;
 		console.log("current user NOT logged in:", currentUser);
 	}
 });
 
 function logInGoogle() {
 	//all firebase functions return a promise!! Add a then when called
-
 	return firebase.auth().signInWithPopup(provider);
 }
 
@@ -45,7 +48,7 @@ function setUser(val){
 // }
 
 function getUserZip(){
-    return currentUser.zip;
+    return currentUser.zipCode;
 }
 
 function getUserWeatherTime(){
@@ -57,8 +60,9 @@ function getUserObj(){
 }
 
 function setUserVars(obj){
+    console.log("user.setUserVars:", obj);
     return new Promise((resolve, reject) => {
-        currentUser.zip = obj.zipCode ? obj.zipCode : currentUser.zip;
+        currentUser.zipCode = obj.zipCode ? obj.zipCode : currentUser.zipCode;
         currentUser.weatherTime = obj.weatherTime ? obj.weatherTime : currentUser.weatherTime;
         currentUser.weather = obj.weather ? obj.weather : currentUser.weather ;
         currentUser.fbID = obj.fbID ? obj.fbID : currentUser.fbID ;

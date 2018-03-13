@@ -29,12 +29,12 @@ function getUserWeather(userObj){
             console.log("compare true");
             console.log("use weather in obj");
         }else{
-            console.log("compare false");
-            getUpdateWeather(userObj.zip);
+            console.log("compare false", userObj.zipCode);
+            getUpdateWeather(userObj.zipCode);
         }
     }else{
-      console.log("no weather, go get some", userObj.zip);
-      getUpdateWeather(userObj.zip);
+      console.log("no weather, go get some", userObj.zipCode);
+      getUpdateWeather(userObj.zipCode);
     }
 }
 
