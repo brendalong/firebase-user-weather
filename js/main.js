@@ -68,3 +68,21 @@ function makeUserObj(user){
    };
    return userObj;
 }
+
+//change zip
+$("#change-zip").click(() => {
+   getZipCodeVal();
+});
+
+function getZipCodeVal(event){
+   // console.log("new zip", zipInput.val());
+   if ($("#zip-input").val() != ""){
+      let newZip = $("#zip-input").val();
+      $("#zip-input").val("");
+
+      //update userObj with new zip
+      //remove temp and time from user obj
+      //get new weather
+      //update FBUser with updated obj
+   }
+}
