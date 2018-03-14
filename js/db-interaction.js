@@ -4,7 +4,7 @@
 
 let $ = require('jquery'),
     firebase = require("./fb-config"),
-   provider = new firebase.auth.GoogleAuthProvider();
+    provider = new firebase.auth.GoogleAuthProvider();
 
 // ****************************************
 // DB interaction using Firebase REST API
