@@ -17,6 +17,7 @@
     "matchdep": "^1.0.1"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "firebase": "^3.6.9",
     "materialize": "^1.0.0",
     "materialize-css": "^0.97.8"
