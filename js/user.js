@@ -66,7 +66,7 @@ function setUserVars(obj){
 function showUser(obj) {
    let userDetails = getUserObj();
    console.log("user.showUser: userDetails:", userDetails);
-   $("#currentTemp").html(`${userDetails.weather} F`);
+   $("#currentTemp").html(`${userDetails.weather} F in ${userDetails.zipCode}`);
 }
 
 function checkUserFB(uid){
