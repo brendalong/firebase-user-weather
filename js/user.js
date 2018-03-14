@@ -66,6 +66,7 @@ function setUserVars(obj){
 function showUser(obj) {
    let userDetails = getUserObj();
    console.log("user.showUser: userDetails:", userDetails);
+   $("#currentTemp").html(`${userDetails.weather} F`);
 }
 
 function checkUserFB(uid){
@@ -98,6 +99,8 @@ function checkUserFB(uid){
                   getUserWeather(resolve);
                });
         }
+      //only show once a user is logged in
+       $("#zip-container").removeClass("is-hidden");
     });
 }
 
@@ -109,6 +112,7 @@ function getUserWeather(userObj) {
       if (helper.compareDateHelper(getUserObj().weatherTime, new Date())) {
          console.log("user.getUserWeather: compare true");
          console.log("user.getUserWeather: use weather in obj");
+         showUser(userObj);
       } else {
          console.log("user.getUserWeather: compare false", userObj.zipCode);
          getUpdateWeather(userObj.zipCode);

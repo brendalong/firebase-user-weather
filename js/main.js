@@ -7,6 +7,8 @@ let $ = require('jquery'),
     weather = require("./weather");
 
 
+// $("#logout").addClass("is-hidden");
+// $("#zip-container").addClass("is-hidden");
 
 //***************************************************************
 $("#login").click(function() {

@@ -8,36 +8,69 @@
 </head>
 <body>
   <div class="container">
-    <nav class="row box">
-      <div class="nav-wrapper">
-        <ul id="nav-mobile" class="left nav__links">
-            <li>Wake Up</li>
-            <li id="login"><a href="#" title="">Login In</a></li>
-            <li id="logout" class="is-hidden"><a href="#" title="">Logout</a></li>
-         </ul>
+   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="navbar-brand">Wake Up
+         <small class="text-muted"> - With Firebase Logins</small>
       </div>
-
     </nav>
-   <div>
-      <input id="zip-input">
-      <button id="change-zip">Change Zip</button>
+
+   <div class="container">
+      <div class="row">
+         <div class="col-sm">
+            <div class="card">
+               <div class="card-body">
+                  <h4 class="card-title">Login
+                     <span class="text-muted">with Google</span>
+                  </h4>
+                  <a id="login" class="card-link" href="#">Login</a>
+                  <a id="logout" class="card-link is-hidden" href="#">Logout</a>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm">
+            <div class="card">
+               <div class="card-body">
+                  <h4 class="card-title">Login &amp; Register
+                     <span class="text-muted">with Email</span>
+                  </h4>
+                  <div>
+                     <label for="email-input">Email:</label>
+                     <input type="text" autofocus="true" placeholder="name@home.com" id="email-input">
+                  </div>
+                  <div>
+                     <label for="password-input">Password:</label>
+                     <input type="password" id="password-input" placeholder="8 characters">
+                  </div>
+                  <div>
+                     <input type="button" class="btn btn-primary" id="login-email" value="Login">
+                     <input type="button" class="btn btn-secondary" id="register-email" value="Register">
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </div> <!-- end of row -->
+   </div> <!-- end of container -->
+
+   <div class="container" id="zip-container">
+      <div class="row">
+         <div class="col-sm">
+            <div>
+               <h4>My Weather: <small class="text-muted" id="currentTemp"></small></h4>
+
+            </div>
+            <div class="bd-section bg-secondary">
+               <fieldset>
+               <label for="zip-input">Change Your Location</label>
+               <input id="zip-input" class="form-control" type="text" placeholder="New Zip Code">
+               <input type="button" class="btn btn-primary" id="change-zip" value="Change">
+               </fieldset>
+            </div>
+         </div>
+      </div>
    </div>
-    <div class="uiContainer row">
-      <section class="uiContainer--wrapper col s9">
-         <h4>Login/Register with Email</h4>
-         <div>
-            <input type="text" autofocus="true" placeholder="Email" id="email-input">
-         </div>
-         <div>
-            <input type="password" id="password-input" placeholder="Password">
-         </div>
-         <div>
-            <button class="btn btn-info" id="login-email">Login</button>
-            <button class="btn btn-default" id="register-email">Register</button>
-         </div>
-      </section>
-    </div>
-  </div>
+
+</div>
   <script type='text/javascript' src='dist/app.js'></script>
 </body>
 </html>
