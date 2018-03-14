@@ -4,7 +4,7 @@
 
 let $ = require('jquery'),
     firebase = require("./fb-config"),
-    user = require("./user");
+   provider = new firebase.auth.GoogleAuthProvider();
 
 // ****************************************
 // DB interaction using Firebase REST API
@@ -46,6 +46,33 @@ function updateUserFB(userObj){
      });
 }
 
+// remember firebase returns a promise
+function createUser(userObj) {
+   return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
+      .catch(function (error) {
+         let errorCode = error.code;
+         let errorMessage = error.message;
+         console.log("error:", errorCode, errorMessage);
+      });
+}
+
+function loginUser(userObj) {
+   return firebase.auth().signInWithEmailAndPassword(userObj.email, userObj.password)
+      .catch(function (error) {
+         let errorCode = error.code;
+         let errorMessage = error.message;
+         console.log("error:", errorCode, errorMessage);
+      });
+}
+
+function logInGoogle() {
+   //all firebase functions return a promise!! Add a then when called
+   return firebase.auth().signInWithPopup(provider);
+}
+
+function logOut() {
+   return firebase.auth().signOut();
+}
 //example with delete
 // function deleteItem(fbID) {
 // 	return $.ajax({
@@ -59,5 +86,9 @@ function updateUserFB(userObj){
 module.exports = {
     getFBDetails,
     addUserFB,
-    updateUserFB
+    updateUserFB,
+    createUser,
+    loginUser,
+    logInGoogle,
+    logOut
 };

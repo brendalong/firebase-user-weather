@@ -21,40 +21,41 @@ function getWeatherByZip(zip) {
    });
 }
 
-function getUserWeather(userObj){
-    //either get weather from user obj or make call to weather
-    //make API Call
-   if (userObj.weatherTime != null){
-        if (helper.compareDateHelper(user.getUserObj().weatherTime, new Date())){
-            console.log("weather.getUserWeather: compare true");
-            console.log("weather.getUserWeather: use weather in obj");
-        }else{
-            console.log("weather.getUserWeather: compare false", userObj.zipCode);
-            getUpdateWeather(userObj.zipCode);
-        }
-    }else{
-      console.log("weather.getUserWeather: no weather, go get some", userObj.zipCode);
-      getUpdateWeather(userObj.zipCode);
-    }
-}
+// function getUserWeather(userObj){
+//     //either get weather from user obj or make call to weather
+//     //make API Call
+//     console.log("getUserWeather: userObj", user.getUserObj());
+//    if (userObj.weatherTime != null){
+//         if (helper.compareDateHelper(user.getUserObj().weatherTime, new Date())){
+//             console.log("weather.getUserWeather: compare true");
+//             console.log("weather.getUserWeather: use weather in obj");
+//         }else{
+//             console.log("weather.getUserWeather: compare false", userObj.zipCode);
+//             getUpdateWeather(userObj.zipCode);
+//         }
+//     }else{
+//       console.log("weather.getUserWeather: no weather, go get some", userObj.zipCode);
+//       getUpdateWeather(userObj.zipCode);
+//     }
+// }
 
-function getUpdateWeather(zip){
-    //get weather
-    getWeatherByZip(zip)
-    .then((weather) => {
-        let userObj = {
-            weatherTime: new Date(),
-            weather: weather.main.temp
-        };
-         return user.setUserVars(userObj);
-      }).then((userObj) => {
-         db.updateUserFB(userObj)
-         .then(() => {
-            user.showUser(userObj);
-         });
-      });
-}
+// function getUpdateWeather(zip){
+//     //get weather
+//     getWeatherByZip(zip)
+//     .then((weather) => {
+//         let userObj = {
+//             weatherTime: new Date(),
+//             weather: weather.main.temp
+//         };
+//          return user.setUserVars(userObj);
+//       }).then((userObj) => {
+//          db.updateUserFB(userObj)
+//          .then(() => {
+//             user.showUser(userObj);
+//          });
+//       });
+// }
 
 
 
-module.exports = { getWeatherByZip, getUpdateWeather, getUserWeather };
+module.exports = { getWeatherByZip };
